@@ -1,3 +1,3 @@
-public class blackjack{
-
+public class blackjack extends Woo{
+    
 }
