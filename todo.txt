@@ -1,0 +1,8 @@
+Cruzse 
+Nikolas Cruz-Marsted and Jack Cruse
+APCS1 Period 4
+				Next Steps:
+1. Finish Woo.java and Blackjack.java. Woo will prompt the user on how to play and keep track of money and Blackjack should have the capability to smoothly run a game of Blackjack for 2+ players
+2. Create Texas.java. Texas should be able to smoothly run a game of Texas Hold’em poker for 2+ players.
+3. Attempt to create an algorithm that will be able to assist either the user or the computer in order to asses probability 
+4. We don’t know. Who knows how far we’ll get
