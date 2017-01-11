@@ -10,24 +10,27 @@ public class Deck{
     //each card will also get a value from 1 to 13, representing its face value
     //aces will be 1, numbers will be 2-10, jacks 11, queens 12, kings 13
     
-    private int[] deck = new deck[52];
+    private Card[] deck;
 
     public Deck(){
 	int count = 0;
-	for(int i = 0 ; i < =3 ; i++){
-	    for(int c = 1 ; c <= 13 ; c++){
-		deck[count] = c;
+	for(int suit = 0 ; suit <= 3 ; suit++){
+	    for(int value = 1 ; value <= 13 ; value++){
+		deck[count] = new Card(suit,value);
 		count++;
+	    }
 	}
     }
-
-
-    //to be used for swapping when deck is shuffled
-    public void swapCards(int c1, int c2){      
-        Card temp = cards[c1];
-        cards[c1] = cards[c2];
-        cards[c2] = temp;
+    
+    public void shuffle(){
+	//completely reset deck
+        for (int i = deck.length - 1 ; i > 0 ; i-- )
+        {
+            int rand = (int)(Math.random() * (i + 1));
+            Card temp = deck[i];
+            deck[i] = deck[rand];
+            deck[rand] = temp;
+        }
     }
-
     
 }
