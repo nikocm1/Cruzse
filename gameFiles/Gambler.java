@@ -1,21 +1,28 @@
 import java.util.ArrayList;
-import java.util.
 
 public class Gambler {
 
-    int money;
+    protected int money;
     //will have cards attribute in future
-    int handVal;
+    protected int handVal;
+    protected ArrayList<Card> hand;
 
-    public Gambler()
+    public Gambler() {
+	money = 100;
+	handVal = 0;
+	hand = new ArrayList<Card>();
+    }
     
 
     //bet() in future
 
-    public void hit() {
-	
+    protected void hit(Card d) {
+	hand.add(d);
     }
 
-    public void stick() {
-	
-    
+    protected void deal(Card a, Card b) {
+	hand.add(a);
+	hand.add(b);
+    }
+
+}

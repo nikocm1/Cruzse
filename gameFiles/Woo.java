@@ -13,6 +13,7 @@ public class Woo{
 	game = Keyboard.readInt();
     }
     if(game == 1){
-	blackjack();
+	blackjack j = new blackjack();
+	cash = j.playGame(cash);
     }
 }
