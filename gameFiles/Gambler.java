@@ -57,9 +57,7 @@ public abstract class Gambler {
 	deal(a, b);
 	int val = calcHandVal();
 
-	System.out.println(name + " received a " +
-			   a + " and a " + b +
-			   " for a hand value of " + val);
+	System.out.println(name + " received a " + a);
 	System.out.println();
     }
 

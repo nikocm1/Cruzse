@@ -14,6 +14,16 @@ public class Player extends Gambler {
 	money = m;
     }
 
+    protected void beginTurn(Card a, Card b) {
+	deal(a, b);
+	int val = calcHandVal();
+
+	System.out.println(name + " received a " +
+			   a + " and a " + b +
+			   " for a hand value of " + val);
+	System.out.println();
+    }    
+
     public String action() {
 	String ret = "";
 	

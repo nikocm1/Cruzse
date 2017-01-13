@@ -62,18 +62,21 @@ public class blackjack {
 	    playTurn(D);
 
 	    if (P.handVal() > D.handVal()) {
-		System.out.println("You won");
+		System.out.println("You beat the dealer's " +
+				   D.handVal() + " with a hand value of " + P.handVal());
 	    }
 
 	    else {
-		System.out.println("The dealer won");
+		System.out.println("The dealer won with a hand value of " + D.handVal());
 	    }
+	    System.out.println();
 
-	    System.out.println("Would you like to play another round \n" +
+	    System.out.println("Would you like to play another round?\n" +
 			   "enter play to play another round \n" +
-			   "enter leave to leave game");
+			   "enter leave to leave game\n");
 
 	    play = Keyboard.readString();
+	    System.out.println();
 	}
 	
 	return P.mValue();
