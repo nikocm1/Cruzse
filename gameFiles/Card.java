@@ -66,6 +66,20 @@ public class Card{
 	}
 	return "ERROR";
     }
+
+    public int cardVal() {
+	int ret = 0;
+	
+	if (value > 10) {
+	    ret = 10;
+	}
+
+	else {
+	    ret = value;
+	}
+
+	return ret;
+    }
     
     public String toString(){
 	return returnSuit() + returnValue();
