@@ -28,12 +28,31 @@ public class Player extends Gambler {
 	String ret = "";
 	
 	System.out.println("Would you like to hit or stay?" +
-			   "\nenter hit to hit" +
-			   "\nenter stay to stay\n");
+			   "\nenter h to hit" +
+			   "\nenter s to stay");
 	
 	ret = Keyboard.readString();
 	System.out.println();
 	return ret;
+    }
+
+    public int bet() {
+	System.out.println("\nHow much would you like to bet?");
+	int bet = Keyboard.readInt();
+
+	while (bet > money || bet < 1) {
+	    System.out.println("Your bet must be greater than 0 " +
+			       "and less than your current balance" +
+			       "\ncurrent balance: " + money);
+	    bet = Keyboard.readInt();
+	}
+	money -= bet;
+	System.out.println();
+	return bet;
+    }
+
+    public void add(int i) {
+	money += i;
     }
 
 }

@@ -9,11 +9,11 @@ public class Dealer extends Gambler {
 	String ret = "";
 
 	if (handVal < 16) {
-	    ret = "hit";
+	    ret = "h";
 	}
 
 	else {
-	    ret = "stay";
+	    ret = "s";
 	}
 	
 	return ret;

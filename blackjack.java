@@ -24,7 +24,7 @@ public class blackjack {
 	while (!g.bust()) {
 	    act = g.action();
 	    
-	    if (act.equals("hit")) {
+	    if (act.equals("h")) {
 		c = deck.draw();
 		System.out.println(g.name() + " was dealt a " +
 				   c);
@@ -45,16 +45,21 @@ public class blackjack {
 	
 
     public int playGame() {
+	int bet;
 	Player P = new Player(playerMoney);
 	Dealer D = new Dealer();
 
-	String play = "play";
+	String play = "p";
+
+	System.out.println("You have " + playerMoney + "$");
        
-	while (play.equals("play")) {
+	while (play.equals("p")) {
 	    P.reset();
 	    D.reset();
 	    deck.resetDrawNum();
 	    deck.shuffle();
+	    bet = P.bet();
+	    
 	    P.beginTurn(deck.draw(), deck.draw());
 	    D.beginTurn(deck.draw(), deck.draw());
 
@@ -64,6 +69,7 @@ public class blackjack {
 	    if (P.handVal() > D.handVal()) {
 		System.out.println("You beat the dealer's " +
 				   D.handVal() + " with a hand value of " + P.handVal());
+		P.add(bet * 2);
 	    }
 
 	    else {
@@ -71,9 +77,10 @@ public class blackjack {
 	    }
 	    System.out.println();
 
-	    System.out.println("Would you like to play another round?\n" +
-			   "enter play to play another round \n" +
-			   "enter leave to leave game\n");
+	    System.out.println("You now have " + P.mValue() + "$\n" +
+			       "Would you like to play another round?\n" +
+			   "enter p to play another round \n" +
+			   "enter l to leave game");
 
 	    play = Keyboard.readString();
 	    System.out.println();

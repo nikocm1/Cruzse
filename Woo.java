@@ -11,6 +11,7 @@ public class Woo{
 	System.out.println("Welcome to the Cruzse Casino! You currently have " + cash + "$ in your account");
 	System.out.println("What game would you like to play? \n  1. Blackjack ");
 	game = Keyboard.readInt();
+	System.out.println();
 
 	if (game == 1) {
 	    blackjack j = new blackjack(cash);
