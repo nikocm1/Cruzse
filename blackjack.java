@@ -10,11 +10,6 @@ public class blackjack {
 	deck = new Deck();
 	playerMoney = a;
     }
-    /*
-    public int playerMoney() {
-	return playerMoney;
-    }
-    */
     
 
     public void playTurn(Gambler g) {
@@ -80,7 +75,7 @@ public class blackjack {
 	    System.out.println("You now have " + P.mValue() + "$\n" +
 			       "Would you like to play another round?\n" +
 			   "enter p to play another round \n" +
-			   "enter l to leave game");
+			   "enter l to leave game or play a different game");
 
 	    play = Keyboard.readString();
 	    System.out.println();
