@@ -27,6 +27,9 @@ public abstract class Gambler {
 	hand.add(a);
 	hand.add(b);
     }
+    protected void deal(Card a){
+	hand.add(a);
+    }
 
     protected int mValue() {
 	return money;
@@ -77,4 +80,5 @@ public abstract class Gambler {
     }
     
     abstract String action();
+    
 }

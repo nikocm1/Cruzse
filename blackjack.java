@@ -52,7 +52,7 @@ public class blackjack {
 	    P.reset();
 	    D.reset();
 	    deck.resetDrawNum();
-	    deck.shuffle();
+ 	    deck.shuffle();
 	    bet = P.bet();
 	    
 	    P.beginTurn(deck.draw(), deck.draw());

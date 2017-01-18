@@ -74,7 +74,7 @@ public class Deck{
 	return ret;
     }
 
-    /*       
+    /*       for testing
     public static void main( String[] args ) {
 	Deck d = new Deck();
 	System.out.println(d);
