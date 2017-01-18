@@ -25,7 +25,7 @@ public class Card{
     }
 
     public String returnValue(){
-	if(value == 1){
+	if(value == 1 || value == 11){
 	    return("Ace");
 	}
 	if(value == 2){
@@ -55,13 +55,13 @@ public class Card{
 	if(value == 10){
 	    return("Ten");
 	}
-	if(value == 11){
+	if(value == 21){
 	    return("Jack");
 	}
-	if(value == 12){
+	if(value == 22){
 	    return("Queen");
 	}
-	if(value == 13){
+	if(value == 23){
 	    return("King");
 	}
 	return "ERROR";
@@ -70,7 +70,7 @@ public class Card{
     public int cardVal() {
 	int ret = 0;
 	
-	if (value > 10) {
+	if (value > 20) {
 	    ret = 10;
 	}
 
@@ -83,5 +83,9 @@ public class Card{
     
     public String toString(){
 	return (returnValue() + " of " + returnSuit());
+    }
+
+    public void lowAce() {
+	value = 1;
     }
 }
