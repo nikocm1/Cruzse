@@ -16,10 +16,20 @@ public class Deck{
     public Deck(){
 	int count = 0;
 	for(int suit = 0 ; suit <= 3 ; suit++){
-	    for(int value = 1 ; value <= 13 ; value++){
+	    deck[count] = new Card(suit,11);
+	    count++;
+	    
+	    for(int value = 2; value <= 10; value++){
 		deck[count] = new Card(suit,value);
 		count++;
 	    }
+	    
+	    deck[count] = new Card(suit,21);
+	    count++;
+	    deck[count] = new Card(suit,22);
+	    count++;
+	    deck[count] = new Card(suit,23);
+	    count++;
 	}
     }
     
