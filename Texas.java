@@ -6,15 +6,17 @@ public class Texas{
 
     private Deck deck;
     private int playerMoney;
+    private String playerName;
     
-    public Texas(int a){
+    public Texas(String b, int a){
 	deck = new Deck();
 	playerMoney = a;
+	playerName = b;
     }
 
     public int playGame(){
 	int bet;
-	TexasPlayer P = new TexasPlayer(playerMoney);
+	TexasPlayer P = new TexasPlayer(playerName, playerMoney);
 	TexasDealer D = new TexasDealer();
 
 	//Bridge B = new Bridge();

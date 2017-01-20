@@ -23,7 +23,7 @@ public class Woo{
 		cash = j.playGame();
 	    }
 	    if (game == 2) {
-		Texas j = new Texas(cash);
+		Texas j = new Texas(name, cash);
 		cash = j.playGame();
 	    }
 	    

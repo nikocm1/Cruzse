@@ -7,16 +7,15 @@ public class TexasPlayer extends Gambler{
 
     public TexasPlayer() {
 	super();
-	System.out.println("What is your name?");
-	name = Keyboard.readString();
 	System.out.println();
 	money = 100;
     }
 
 
-    public TexasPlayer(int m){
+    public TexasPlayer(String n, int m){
 	this();
 	money = m;
+	name = n;
     }
 
     protected ArrayList<Card> beginTurnTexas(Card a, Card b) {
