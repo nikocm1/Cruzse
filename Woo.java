@@ -10,12 +10,16 @@ public class Woo{
     public static void main(String[] args){
 	cash = 100;
 	System.out.println("Welcome to the Cruzse Casino! You currently have " + cash + "$ in your account");
+	
+	System.out.println("What is your name?");
+	String name = Keyboard.readString();
+	
 	System.out.println("What game would you like to play? \n  1. Blackjack \n  2. Texas Hold'em Poker\n ");
 	game = Keyboard.readInt();
 	System.out.println();
 	while(cash > 0 && keepPlaying == 0){
 	    if (game == 1) {
-		blackjack j = new blackjack(cash);
+		blackjack j = new blackjack(name, cash);
 		cash = j.playGame();
 	    }
 	    if (game == 2) {

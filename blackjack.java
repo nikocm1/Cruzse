@@ -5,10 +5,12 @@ public class blackjack {
     //potVal
     private Deck deck;
     private int playerMoney;
+    private String playerName;
 
-    public blackjack(int a) {
+    public blackjack(String b, int a) {
 	deck = new Deck();
 	playerMoney = a;
+	playerName = b;
     }
     
 
@@ -41,7 +43,7 @@ public class blackjack {
 
     public int playGame() {
 	int bet;
-	Player P = new Player(playerMoney);
+	Player P = new Player(playerName, playerMoney);
 	Dealer D = new Dealer();
 
 	String play = "p";
@@ -72,7 +74,7 @@ public class blackjack {
 	    }
 	    System.out.println();
 
-	    System.out.println("You now have " + P.mValue() + "$\n" +
+	    System.out.println("You now have " + P.mValue() + "$\n\n" +
 			       "Would you like to play another round?\n" +
 			   "enter p to play another round \n" +
 			   "enter l to leave game or play a different game");
