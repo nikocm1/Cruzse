@@ -38,10 +38,19 @@ public class Texas{
 	    deck.shuffle();
 	    deck.shuffle();
 	    deck.shuffle();
-		
-	    P.beginTurn(deck.draw(),deck.draw());
+
+	    //create arraylist to store players hand and begin players turn
+	    ArrayList<Card> playerHand = new ArrayList<Card>();
+	    playerHand = P.beginTurnTexas(deck.draw(),deck.draw());
+
+	    //deal to the dealer
 	    D.deal(deck.draw(),deck.draw());
 
+	    //print out players cards
+	    System.out.println(returnCard(playerHand.get(0)));
+	    System.out.println(returnCard(playerHand.get(1)));
+
+	    
 	    //create bridge
 	    ArrayList<Card> B = new ArrayList<Card>();
 	    B.add(deck.draw());
@@ -50,13 +59,16 @@ public class Texas{
 	    B.add(deck.draw());
 	    B.add(deck.draw());
 
-		    
+
+	    
 	    
 	    //add cards to bridge
 	    
 	    
 	    System.out.println("The bridge currently has the " + B.get(0) + ", the " + B.get(1) + " and the " +  B.get(2));
-
+	    System.out.println(returnCard(B.get(0)));
+	    System.out.println(returnCard(B.get(1)));
+	    System.out.println(returnCard(B.get(2)));
 	    
 	    //first turn
 	    int storage = 90210;
@@ -132,6 +144,22 @@ public class Texas{
     public String handEval(TexasPlayer P , TexasDealer D){
 	return "player";
 	
+    }
+    
+    public String returnCard(Card A){
+	if(A.suit == 3){
+	    return "- - - - - - - - -\n- S   " + A.value + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";
+	}
+	if(A.suit == 0){
+	    return "- - - - - - - - -\n- H   " + A.value + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -"; 
+	}
+	if(A.suit == 2){
+	    return "- - - - - - - - -\n- C   " + A.value + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";	    
+	}
+	if(A.suit == 1){
+	    return "- - - - - - - - -\n- D   " + A.value + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";
+	}
+	return "ERROR 90210";
     }
     
 }

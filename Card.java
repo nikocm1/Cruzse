@@ -1,6 +1,6 @@
 public class Card{
     private int spades,clubs,hearts,diamonds;
-    private int suit, value;
+    public int suit, value;
     
     
     public Card(int SUIT, int VALUE){

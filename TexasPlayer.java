@@ -1,4 +1,6 @@
 import cs1.Keyboard;
+import java.util.ArrayList;
+
 
 public class TexasPlayer extends Gambler{
     protected int money;
@@ -17,7 +19,7 @@ public class TexasPlayer extends Gambler{
 	money = m;
     }
 
-    protected void beginTurn(Card a, Card b) {
+    protected ArrayList<Card> beginTurnTexas(Card a, Card b) {
 	deal(a, b);
 	int val = calcHandVal();
 
@@ -25,6 +27,11 @@ public class TexasPlayer extends Gambler{
 			   a + " and a " + b 
 			   );
 	System.out.println();
+	ArrayList<Card> ting = new ArrayList<Card>();
+	ting.add(a);
+	ting.add(b);
+	return ting;
+	
     }    
 
     public String action() {
@@ -81,5 +88,4 @@ public class TexasPlayer extends Gambler{
 	return money;
     }
 
-    
 }

@@ -55,7 +55,7 @@ public abstract class Gambler {
 
 	return total;
     }
-
+    
     protected void beginTurn(Card a, Card b) {
 	deal(a, b);
 	int val = calcHandVal();
