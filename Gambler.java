@@ -103,7 +103,10 @@ public abstract class Gambler {
 	    calcHandVal();
 	}
     }
-	
+
+    protected void add(int i) {
+	money += i;
+    }    	
     
     abstract String action();
     

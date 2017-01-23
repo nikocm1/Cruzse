@@ -43,6 +43,35 @@ public class blackjack {
 	}
     }
 
+    public String endTurn(Dealer a, Gambler b, int bet) {
+	String ret = "";
+	
+	if (b.handVal() == 0) {
+	    ret = b.name() + " busted and the dealer won";
+	}
+
+	else if ( a.handVal() == b.handVal() ) {
+	    ret = b.name() + " and the dealer push";
+	    b.add(bet);
+	}
+
+	else if (a.handVal() == 0) {
+	    ret = "The dealer busted and " + b.name() + " won";
+	    b.add(bet * 2);
+	}
+
+	else if ( a.handVal() > b.handVal() ) {
+	    ret = "The dealer beat " + b.name();
+	}
+
+	else if ( a.handVal() < b.handVal() ) {
+	    ret = b.name() + " beat the dealer";
+	    b.add(bet * 2);
+	}
+
+	return ret;
+    }
+
 
     public int playGame() {
 	int bet;
@@ -68,7 +97,7 @@ public class blackjack {
 	    playTurn(P);
 	    playTurn(D);
 
-	    if (P.handVal() > D.handVal()) {
+	    /*	    if (P.handVal() > D.handVal()) {
 		System.out.println("You beat the dealer's " +
 				   D.handVal() + " with a hand value of " + P.handVal());
 		P.add(bet * 2);
@@ -77,6 +106,8 @@ public class blackjack {
 	    else {
 		System.out.println("The dealer won with a hand value of " + D.handVal());
 	    }
+	    */
+	    System.out.println(endTurn(D, P, bet));
 
 	    System.out.println("Dealer's hand: " + D.hand() +
 			       "\nYour hand: " + P.hand());

@@ -51,9 +51,6 @@ public class Player extends Gambler {
 	return bet;
     }
 
-    public void add(int i) {
-	money += i;
-    }
 
 }
 
