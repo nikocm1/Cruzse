@@ -85,7 +85,6 @@ public class blackjack {
 	int bet;
 	Player P = new Player(playerName, playerMoney);
 	Player temp = new Player(playerName, playerMoney);
-	Jack J = new Jack();
 	Dealer D = new Dealer();
 	boolean split;
 	int bonus;
@@ -97,7 +96,6 @@ public class blackjack {
 	while (play.equals("p")) {
 	    split = false;
 	    P.reset();
-	    J.reset();
 	    D.reset();
 	    temp.reset();
 	    deck.resetDrawNum();

@@ -7,6 +7,12 @@ public class Player extends Gambler {
 	System.out.println();
     }
 
+    public Player(int m) {
+	this();
+	name = "you";
+	money = m;
+    }
+
     public Player(String n, int m) {
 	this();
 	name = n;

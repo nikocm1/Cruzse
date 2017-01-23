@@ -14,7 +14,7 @@ public class Woo{
 	System.out.println("What is your name?");
 	String name = Keyboard.readString();
 	
-	System.out.println("What game would you like to play? \n  1. Blackjack \n  2. Texas Hold'em Poker\n ");
+	System.out.println("What game would you like to play? \n  1. Blackjack \n  2. Texas Hold'em Poker\n  3. Slot Machines\n");
 	game = Keyboard.readInt();
 	System.out.println();
 	while(cash > 0 && keepPlaying == 0){
@@ -27,6 +27,11 @@ public class Woo{
 		cash = j.playGame();
 	    }
 
+	    if (game == 3) {
+		Slots j = new Slots(cash);
+		cash = j.playGame();
+	    }
+
 	    if (cash <= 0) {
 		System.out.println("You lose...\nCome back when you have more money for us to take chump");
 		break;
@@ -36,7 +41,7 @@ public class Woo{
 	    System.out.println("   0.) Play a different game \n   1.) Leave the casino\n\n");
 	    keepPlaying = Keyboard.readInt();
 	    if(keepPlaying == 0){
-		System.out.println("What game would you like to play?\n   1.) Blackjack\n   2.) Texas Hold'em Poker");
+		System.out.println("What game would you like to play?\n   1.) Blackjack\n   2.) Texas Hold'em Poker\n   3.) Slot Machines\n");
 		game = Keyboard.readInt();
 	    }			       
 	}
