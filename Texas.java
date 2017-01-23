@@ -72,6 +72,8 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("You folded and lost your bet");
+			    P.remove(bet);
+
 		break;	    
 	    }
 	    if(storage > 0){
@@ -89,6 +91,7 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("The computer folded and you won");
+		P.add(bet * 2);
 		break;	    
 	    }
 	    if (storage == 0){
@@ -106,11 +109,13 @@ public class Texas extends handEval{
 		}
 		else{
 		    System.out.println("You folded and lost your bet");
+		    	    P.remove(bet);
+
 		    break;
 		    }
 	    }
 	    System.out.println("The pot is now " + bet);
-			     
+	    carryOverBet = 0;
 	    //end computer turn
 
 	   
@@ -128,6 +133,8 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("You folded and lost your bet");
+			    P.remove(bet);
+
 		break;	    
 	    }
 	    if(storage > 0){
@@ -145,6 +152,7 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("The computer folded and you won");
+		P.add(bet * 2);
 		break;	    
 	    }
 	    if (storage == 0){
@@ -162,11 +170,13 @@ public class Texas extends handEval{
 		}
 		else{
 		    System.out.println("You folded and lost your bet");
+		    	    P.remove(bet);
+
 		    break;
 		    }
 	    }
 	    System.out.println("The pot is now " + bet);
-
+	    carryOverBet = 0;
 	    //end computer turn
 
 
@@ -189,6 +199,8 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("You folded and lost your bet");
+			    P.remove(bet);
+
 		break;	    
 	    }
 	    if(storage > 0){
@@ -206,6 +218,7 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("The computer folded and you won");
+		P.add(bet * 2);
 		break;	    
 	    }
 	    if (storage == 0){
@@ -223,11 +236,13 @@ public class Texas extends handEval{
 		}
 		else{
 		    System.out.println("You folded and lost your bet");
+		    	    P.remove(bet);
+
 		    break;
 		    }
 	    }
 	    System.out.println("The pot is now " + bet);
-
+	    carryOverBet = 0;
 	    //end computer turn
 
 
@@ -249,6 +264,8 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("You folded and lost your bet");
+			    P.remove(bet);
+
 		break;	    
 	    }
 	    if(storage > 0){
@@ -266,6 +283,7 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("The computer folded and you won");
+		P.add(bet * 2);
 		break;	    
 	    }
 	    if (storage == 0){
@@ -283,12 +301,14 @@ public class Texas extends handEval{
 		}
 		else{
 		    System.out.println("You folded and lost your bet");
+		    	    P.remove(bet);
+
 		    break;
 		    }
 	    }
 	    System.out.println("The pot is now " + bet);
 	    //end computer turn
-
+	    carryOverBet = 0;
 	    //ENDED ROUND
 	 
 
@@ -311,26 +331,27 @@ public class Texas extends handEval{
 	    
 		
 		
-
-	    if(handEvalTwoPlayer(playerHand, dealerHand) == "player"){//hand eval also needs to be added
-		System.out.println("You beat the computer");
-		P.add(bet * 2);
-	    }
-		
-	    else {
-		System.out.println("The computer won");
-		P.remove(bet);
-	    }
-	    System.out.println("You now have " + P.mValue() + "$\n" +
-			       "Would you like to play another round?\n" +
-			       "enter p to play another round \n" +
-			       "enter l to leave game or play a different game");
-	    
-	    play = Keyboard.readString();
-	    System.out.println();
-	    
-	    
+	
+	if(handEvalTwoPlayer(playerHand, dealerHand, B) == "player"){//hand eval also needs to be added
+	    System.out.println("You beat the computer");
+	    P.add(bet);
 	}
+	
+	else {
+	    System.out.println("The computer won");
+	    P.remove(bet);
+	}
+	
+	System.out.println("You now have " + P.mValue() + "$\n" +
+			   "Would you like to play another round?\n" +
+			   "enter p to play another round \n" +
+			   "enter l to leave game or play a different game");
+	
+	play = Keyboard.readString();
+	System.out.println();
+	}
+	
+    
 	
 	
 	return P.mValue();
