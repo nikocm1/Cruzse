@@ -59,6 +59,7 @@ public abstract class Gambler {
     protected void beginTurn(Card a, Card b) {
 	deal(a, b);
 	int val = calcHandVal();
+	lowerAce();
 
 	System.out.println(name + " received a " + a);
 	System.out.println();
@@ -78,6 +79,31 @@ public abstract class Gambler {
 	}
 	calcHandVal();
     }
+
+    protected String hand() {
+	return hand.toString();
+    }
+
+    protected int findAce() {
+	int ret = -1;
+	for (int i = 0; i < hand.size(); i++) {
+	    if (hand.get(i).cardVal() == 11) {
+		ret = i;
+	    }
+	}
+	return ret;
+    }
+    
+    protected void lowerAce() {
+	if (handVal > 21) {
+	    int n = findAce();
+	    if (n != -1) {
+		hand.get(n).reduceAce();
+	    }
+	    calcHandVal();
+	}
+    }
+	
     
     abstract String action();
     

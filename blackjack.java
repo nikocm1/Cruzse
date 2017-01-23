@@ -7,6 +7,7 @@ public class blackjack {
     private int playerMoney;
     private String playerName;
 
+    
     public blackjack(String b, int a) {
 	deck = new Deck();
 	playerMoney = a;
@@ -25,7 +26,10 @@ public class blackjack {
 		c = deck.draw();
 		System.out.println(g.name() + " was dealt a " +
 				   c);
+
 		g.hit(c);
+		g.lowerAce();
+		
 		System.out.println(g.name() + " now has a hand value of " +
 				   g.handVal());
 		System.out.println();
@@ -38,12 +42,12 @@ public class blackjack {
 	    //System.out.println(g.bust());
 	}
     }
-	
-	
+
 
     public int playGame() {
 	int bet;
 	Player P = new Player(playerName, playerMoney);
+	Jack J = new Jack();
 	Dealer D = new Dealer();
 
 	String play = "p";
@@ -52,6 +56,7 @@ public class blackjack {
        
 	while (play.equals("p")) {
 	    P.reset();
+	    J.reset();
 	    D.reset();
 	    deck.resetDrawNum();
  	    deck.shuffle();
@@ -72,6 +77,10 @@ public class blackjack {
 	    else {
 		System.out.println("The dealer won with a hand value of " + D.handVal());
 	    }
+
+	    System.out.println("Dealer's hand: " + D.hand() +
+			       "\nYour hand: " + P.hand());
+	    
 	    System.out.println();
 
 	    System.out.println("You now have " + P.mValue() + "$\n\n" +

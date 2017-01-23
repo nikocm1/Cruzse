@@ -16,6 +16,7 @@ public class Player extends Gambler {
     protected void beginTurn(Card a, Card b) {
 	deal(a, b);
 	int val = calcHandVal();
+	lowerAce();
 
 	System.out.println(name + " received a " +
 			   a + " and a " + b +
