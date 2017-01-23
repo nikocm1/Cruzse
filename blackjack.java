@@ -95,24 +95,21 @@ public class blackjack {
 	    D.beginTurn(deck.draw(), deck.draw());
 
 	    playTurn(P);
+	    
+	    D.revealCard();
 	    playTurn(D);
 
-	    /*	    if (P.handVal() > D.handVal()) {
-		System.out.println("You beat the dealer's " +
-				   D.handVal() + " with a hand value of " + P.handVal());
-		P.add(bet * 2);
-	    }
-
-	    else {
-		System.out.println("The dealer won with a hand value of " + D.handVal());
-	    }
-	    */
 	    System.out.println(endTurn(D, P, bet));
 
 	    System.out.println("Dealer's hand: " + D.hand() +
 			       "\nYour hand: " + P.hand());
 	    
 	    System.out.println();
+	    
+	    if (P.mValue() == 0) {
+		System.out.println("You have bankrupted");
+		break;
+	    }	    	    
 
 	    System.out.println("You now have " + P.mValue() + "$\n\n" +
 			       "Would you like to play another round?\n" +
@@ -120,6 +117,7 @@ public class blackjack {
 			   "enter l to leave game or play a different game");
 
 	    play = Keyboard.readString();
+	    
 	    System.out.println();
 	}
 	

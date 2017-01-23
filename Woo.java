@@ -26,6 +26,11 @@ public class Woo{
 		Texas j = new Texas(name, cash);
 		cash = j.playGame();
 	    }
+
+	    if (cash <= 0) {
+		System.out.println("You lose...\nCome back when you have more money for us to take chump");
+		break;
+	    }
 	    
 	    System.out.println("Would you like to play a different game, or leave the casino?");
 	    System.out.println("   0.) Play a different game \n   1.) Leave the casino\n\n");

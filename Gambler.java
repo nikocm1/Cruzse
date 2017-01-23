@@ -106,7 +106,11 @@ public abstract class Gambler {
 
     protected void add(int i) {
 	money += i;
-    }    	
+    }
+
+    protected void revealCard() {
+	System.out.println(name + " had a " + hand.get(1));
+    }
     
     abstract String action();
     
