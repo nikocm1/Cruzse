@@ -179,7 +179,6 @@ public class handEval{
 		}
 	    }
 	}
-	System.out.println(pp);
 
 	
 	int dp = 0;
@@ -190,7 +189,6 @@ public class handEval{
 		}
 	    }
 	}
-	System.out.println(dp);
 
 	
 
@@ -216,7 +214,6 @@ public class handEval{
 		}
 	    }
 	}
-	System.out.println(pp);
 
 	boolean dp = false;
 	for(int x = 0; x < 2 ; x++){
@@ -227,7 +224,6 @@ public class handEval{
 		}
 	    }
 	}
-	System.out.println(dp);
 
 	
 	if(pp == true && dp == false){
@@ -250,7 +246,6 @@ public class handEval{
 		pHigh = hand1.get(x).value;
 	    }
 	}
-	System.out.println(pHigh);
 
 
 	//get dealer high card
@@ -260,7 +255,6 @@ public class handEval{
 		dHigh = hand1.get(x).value;
 	    }
 	}
-	System.out.println(dHigh);
 
 	if(pHigh > dHigh){
 	    return "player";

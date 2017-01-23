@@ -306,7 +306,7 @@ public class Texas extends handEval{
 		    break;
 		    }
 	    }
-	    System.out.println("The pot is now " + bet);
+	    System.out.println("The pot is now \n\n" + bet);
 	    //end computer turn
 	    carryOverBet = 0;
 	    //ENDED ROUND
@@ -315,20 +315,7 @@ public class Texas extends handEval{
 
 
 	    
-	    /*
-	      SHOW CARDS SO WE CAN CHECK IF EVERYTHING IS CORRECT
-	     */
-	    
-	    //print out players cards
-	    System.out.println("Your hand: ");
-	    System.out.println(returnCard(playerHand.get(0)));
-	    System.out.println(returnCard(playerHand.get(1)));
-
-	    //print out dealers cards
-	    System.out.println("The computer's hand");
-	    System.out.println(returnCard(dealerHand.get(0)));
-	    System.out.println(returnCard(dealerHand.get(1)));
-	    
+	  
 		
 		
 	
