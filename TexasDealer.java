@@ -46,8 +46,7 @@ public class TexasDealer extends Gambler{
 	boolean handSucks = false;;
 	boolean goodHand = false;
 
-	System.out.println(analyze.get(0));	
-	System.out.println(analyze.get(1));
+
 	
 
 

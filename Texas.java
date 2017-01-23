@@ -58,8 +58,8 @@ public class Texas extends handEval{
 	    B.add(deck.draw());
 	    B.add(deck.draw());
 
-
 	    
+	   
 
 	    int carryOverBet = 0;
 	    
@@ -72,8 +72,8 @@ public class Texas extends handEval{
 
 	    if (storage == -1){
 		System.out.println("You folded and lost your bet");
-			    P.remove(bet);
-
+		P.remove(bet);
+		
 		break;	    
 	    }
 	    if(storage > 0){
@@ -90,31 +90,31 @@ public class Texas extends handEval{
 	    storage = D.playTurn(dealerHand, B, 0);
 
 	    if (storage == -1){
-		System.out.println("The computer folded and you won");
+		System.out.println("\nThe computer folded and you won\n");
 		P.add(bet * 2);
 		break;	    
 	    }
 	    if (storage == 0){
-		System.out.println("The computer called");
+		System.out.println("\nThe computer called\n");
 		bet += carryOverBet;	
 	    }
 	    if(storage > 0){
 		bet += carryOverBet;	
 		int raise = storage;
-		System.out.println("The computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
+		System.out.println("\nThe computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
 		int check = 90210;
 		check = Keyboard.readInt();
 		if(check == 1){
 		     bet += raise * 2;
 		}
 		else{
-		    System.out.println("You folded and lost your bet");
+		    System.out.println("\nYou folded and lost your bet\n");
 		    	    P.remove(bet);
 
 		    break;
 		    }
 	    }
-	    System.out.println("The pot is now " + bet);
+	    System.out.println("\nThe pot is now " + bet+ "\n");
 	    carryOverBet = 0;
 	    //end computer turn
 
@@ -128,18 +128,21 @@ public class Texas extends handEval{
 	    /*
 	      SECOND TURN FOR PLAYER
 	     */
+	    System.out.println("Your cards: ");
+	    System.out.println(playerHand.get(0));
+	    System.out.println(playerHand.get(1));
 	    storage = 90210;
 	    storage = P.playTurn();
 
 	    if (storage == -1){
-		System.out.println("You folded and lost your bet");
+		System.out.println("\nYou folded and lost your bet\n");
 			    P.remove(bet);
 
 		break;	    
 	    }
 	    if(storage > 0){
 		bet += storage;
-		System.out.println("You raised by $" + storage);
+		System.out.println("\nYou raised by $" + storage + "\n");
 		carryOverBet = storage;
 	    }//end player turn
 
@@ -151,31 +154,31 @@ public class Texas extends handEval{
 	    storage = D.playTurn(dealerHand, B, 3);
 
 	    if (storage == -1){
-		System.out.println("The computer folded and you won");
+		System.out.println("\nThe computer folded and you won\n");
 		P.add(bet * 2);
 		break;	    
 	    }
 	    if (storage == 0){
-		System.out.println("The computer called");
+		System.out.println("\nThe computer called\n");
 		bet += carryOverBet;	
 	    }
 	    if(storage > 0){
 		bet += carryOverBet;	
 		int raise = storage;
-		System.out.println("The computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
+		System.out.println("\nThe computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
 		int check = 90210;
 		check = Keyboard.readInt();
 		if(check == 1){
 		     bet += raise * 2;
 		}
 		else{
-		    System.out.println("You folded and lost your bet");
+		    System.out.println("\nYou folded and lost your bet\n");
 		    	    P.remove(bet);
 
 		    break;
 		    }
 	    }
-	    System.out.println("The pot is now " + bet);
+	    System.out.println("\nThe pot is now " + bet + "\n");
 	    carryOverBet = 0;
 	    //end computer turn
 
@@ -194,18 +197,21 @@ public class Texas extends handEval{
 	 /*
 	      THIRD TURN FOR PLAYER
 	     */
+	    System.out.println("\nYour cards: ");
+	    System.out.println(playerHand.get(0));
+	    System.out.println(playerHand.get(1));
 	    storage = 90210;
 	    storage = P.playTurn();
 
 	    if (storage == -1){
-		System.out.println("You folded and lost your bet");
+		System.out.println("\nYou folded and lost your bet\n");
 			    P.remove(bet);
 
 		break;	    
 	    }
 	    if(storage > 0){
 		bet += storage;
-		System.out.println("You raised by $" + storage);
+		System.out.println("\nYou raised by $" + storage + "\n");
 		carryOverBet = storage;
 	    }//end player turn
 
@@ -217,31 +223,31 @@ public class Texas extends handEval{
 	    storage = D.playTurn(dealerHand, B, 4);
 
 	    if (storage == -1){
-		System.out.println("The computer folded and you won");
+		System.out.println("\nThe computer folded and you won\n");
 		P.add(bet * 2);
 		break;	    
 	    }
 	    if (storage == 0){
-		System.out.println("The computer called");
+		System.out.println("\nThe computer called\n");
 		bet += carryOverBet;	
 	    }
 	    if(storage > 0){
 		bet += carryOverBet;	
 		int raise = storage;
-		System.out.println("The computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
+		System.out.println("\nThe computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold\n");
 		int check = 90210;
 		check = Keyboard.readInt();
 		if(check == 1){
 		     bet += raise * 2;
 		}
 		else{
-		    System.out.println("You folded and lost your bet");
+		    System.out.println("\nYou folded and lost your bet\n");
 		    	    P.remove(bet);
 
 		    break;
 		    }
 	    }
-	    System.out.println("The pot is now " + bet);
+	    System.out.println("\nThe pot is now " + bet + "\n");
 	    carryOverBet = 0;
 	    //end computer turn
 
@@ -259,18 +265,21 @@ public class Texas extends handEval{
 	    /*
 	      FOURTH TURN FOR PLAYER
 	     */
+	    System.out.println("\nYour cards: ");
+	    System.out.println(playerHand.get(0));
+	    System.out.println(playerHand.get(1));
 	    storage = 90210;
 	    storage = P.playTurn();
 
 	    if (storage == -1){
-		System.out.println("You folded and lost your bet");
+		System.out.println("\nYou folded and lost your bet\n");
 			    P.remove(bet);
 
 		break;	    
 	    }
 	    if(storage > 0){
 		bet += storage;
-		System.out.println("You raised by $" + storage);
+		System.out.println("\nYou raised by $" + storage + "\n");
 		carryOverBet = storage;
 	    }//end player turn
 
@@ -282,39 +291,50 @@ public class Texas extends handEval{
 	    storage = D.playTurn(dealerHand, B, 5);
 
 	    if (storage == -1){
-		System.out.println("The computer folded and you won");
+		System.out.println("\nThe computer folded and you won\n");
 		P.add(bet * 2);
 		break;	    
 	    }
 	    if (storage == 0){
-		System.out.println("The computer called");
+		System.out.println("\nThe computer called\n");
 		bet += carryOverBet;	
 	    }
 	    if(storage > 0){
 		bet += carryOverBet;	
 		int raise = storage;
-		System.out.println("The computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
+		System.out.println("\nThe computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold\n");
 		int check = 90210;
 		check = Keyboard.readInt();
 		if(check == 1){
 		     bet += raise * 2;
 		}
 		else{
-		    System.out.println("You folded and lost your bet");
+		    System.out.println("\nYou folded and lost your bet\n");
 		    	    P.remove(bet);
 
 		    break;
 		    }
 	    }
-	    System.out.println("The pot is now \n\n" + bet);
+	    System.out.println("The pot is now " + bet + "\n\n");
 	    //end computer turn
 	    carryOverBet = 0;
 	    //ENDED ROUND
-	 
-
-
 
 	    
+	    
+	    //REVEAL CARDS
+	    System.out.println("\n\n\nRevealing Cards\n");
+	    System.out.println("Your cards: ");
+	    System.out.println(playerHand.get(0));
+	    System.out.println(playerHand.get(1));
+	    System.out.println("\nThe Computers cards: ");
+	    System.out.println(dealerHand.get(0));
+	    System.out.println(dealerHand.get(1));
+		
+	
+
+	
+	
 	  
 		
 		
@@ -336,8 +356,8 @@ public class Texas extends handEval{
 	
 	play = Keyboard.readString();
 	System.out.println();
+    
 	}
-	
     
 	
 	
