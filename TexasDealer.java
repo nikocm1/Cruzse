@@ -65,8 +65,8 @@ public class TexasDealer extends Gambler{
 	}
 	
 	//sameValue checking
-	for(int x = 0 ; x < analyze.size() ; x++){
-	    for(int i = x + 1 ; i < analyze.size() ; i++){
+	for(int x = 0 ; x < 2 ; x++){
+	    for(int i = 2 ; i < numBridge ; i++){
 		if(analyze.get(x).value == analyze.get(i).value){
 		    twoPair = true;
 		    break;
