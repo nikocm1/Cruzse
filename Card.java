@@ -101,7 +101,7 @@ public class Card{
 	}
 
 	else {
-	    ret = value;
+	    ret = "" + value;
 	}
 
 	return ret;
@@ -111,7 +111,7 @@ public class Card{
 	return (returnValue() + " of " + returnSuit());
     }
 
-    public void lowAce() {
+    public void reduceAce() {
 	value = 1;
     }
 }
