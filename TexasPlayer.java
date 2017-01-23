@@ -49,6 +49,10 @@ public class TexasPlayer extends Gambler{
 	money += i;
     }
 
+    public void remove(int i) {
+	money -= i;
+    }
+
     public int bet() {
 	System.out.println("\nHow much would you like to bet");
 	int bet = Keyboard.readInt();

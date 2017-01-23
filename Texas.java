@@ -2,7 +2,7 @@ import cs1.Keyboard;
 import java.util.ArrayList;
 
 
-public class Texas{
+public class Texas extends handEval{
 
     private Deck deck;
     private int playerMoney;
@@ -27,16 +27,17 @@ public class Texas{
 		
 	
 	while(play.equals("p")){
+	    //each time you play, buy in is 5$
 	    System.out.println("The starting bet is 5$");
-	    bet = 5;
+	    bet = 10;
 
-
+	    //reset the deck and each player
 	    deck.resetDrawNum();
 	    P.reset();
 	    D.reset();
 
 	    
-	    
+	    //shuffle 3 times, as is customary in poker
 	    deck.shuffle();
 	    deck.shuffle();
 	    deck.shuffle();
@@ -45,14 +46,10 @@ public class Texas{
 	    ArrayList<Card> playerHand = new ArrayList<Card>();
 	    playerHand = P.beginTurnTexas(deck.draw(),deck.draw());
 
-	    //deal to the dealer
-	    D.deal(deck.draw(),deck.draw());
+	    //create arraylist to store dealers hand and begin players turn
+	    ArrayList<Card> dealerHand = new ArrayList<Card>();
+	    dealerHand = D.beginTurnTexas(deck.draw(),deck.draw());
 
-	    //print out players cards
-	    System.out.println(returnCard(playerHand.get(0)));
-	    System.out.println(returnCard(playerHand.get(1)));
-
-	    
 	    //create bridge
 	    ArrayList<Card> B = new ArrayList<Card>();
 	    B.add(deck.draw());
@@ -63,16 +60,13 @@ public class Texas{
 
 
 	    
+
+	    int carryOverBet = 0;
 	    
-	    //add cards to bridge
-	    
-	    
-	    System.out.println("The bridge currently has the " + B.get(0) + ", the " + B.get(1) + " and the " +  B.get(2));
-	    System.out.println(returnCard(B.get(0)));
-	    System.out.println(returnCard(B.get(1)));
-	    System.out.println(returnCard(B.get(2)));
-	    
-	    //first turn
+	
+	    /*
+	      FIRST TURN FOR PLAYER
+	     */
 	    int storage = 90210;
 	    storage = P.playTurn();
 
@@ -82,25 +76,114 @@ public class Texas{
 	    }
 	    if(storage > 0){
 		bet += storage;
-	    }
+		System.out.println("You raised by $" + storage);
+		carryOverBet = storage;
+	    }//end player turn
 
+	    /*
+	      FIRST TURN FOR COMPUTER
+	     */
+
+	    storage = 90210;
+	    storage = D.playTurn(dealerHand, B, 0);
+
+	    if (storage == -1){
+		System.out.println("The computer folded and you won");
+		break;	    
+	    }
+	    if (storage == 0){
+		System.out.println("The computer called");
+		bet += carryOverBet;	
+	    }
+	    if(storage > 0){
+		bet += carryOverBet;	
+		int raise = storage;
+		System.out.println("The computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
+		int check = 90210;
+		check = Keyboard.readInt();
+		if(check == 1){
+		     bet += raise * 2;
+		}
+		else{
+		    System.out.println("You folded and lost your bet");
+		    break;
+		    }
+	    }
+	    System.out.println("The pot is now " + bet);
+			     
+	    //end computer turn
+
+	   
+	    
+	    //show first three cards on bridge	    
+	    System.out.println("The bridge currently has the " + B.get(0) + ", the " + B.get(1) + " and the " +  B.get(2));
+	   
+
+
+	    /*
+	      SECOND TURN FOR PLAYER
+	     */
+	    storage = 90210;
+	    storage = P.playTurn();
+
+	    if (storage == -1){
+		System.out.println("You folded and lost your bet");
+		break;	    
+	    }
+	    if(storage > 0){
+		bet += storage;
+		System.out.println("You raised by $" + storage);
+		carryOverBet = storage;
+	    }//end player turn
+
+	    /*
+	      SECOND TURN FOR COMPUTER
+	     */
+
+	    storage = 90210;
+	    storage = D.playTurn(dealerHand, B, 3);
+
+	    if (storage == -1){
+		System.out.println("The computer folded and you won");
+		break;	    
+	    }
+	    if (storage == 0){
+		System.out.println("The computer called");
+		bet += carryOverBet;	
+	    }
+	    if(storage > 0){
+		bet += carryOverBet;	
+		int raise = storage;
+		System.out.println("The computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
+		int check = 90210;
+		check = Keyboard.readInt();
+		if(check == 1){
+		     bet += raise * 2;
+		}
+		else{
+		    System.out.println("You folded and lost your bet");
+		    break;
+		    }
+	    }
+	    System.out.println("The pot is now " + bet);
+
+	    //end computer turn
+
+
+	    
+	        
+	    /*
+	      PRINT OUT BRIDGE AND REVEAL A CARD
+	     */
 	    System.out.println("The " + B.get(3) + " was shown on the bridge");
 	    System.out.println("The bridge now has the " + B.get(0) + ", the " + B.get(1) + ", the " + B.get(2) + " and the " +  B.get(3));
+	    
+
 
 	    
-	    //second turn
-	    storage = 90210;
-	    storage = P.playTurn();
-	    
-	    if (storage == -1){
-		System.out.println("You folded and lost your bet");
-		break;	    
-	    }
-	    if(storage > 0){
-		bet += storage;
-	    }
-
-	    //third turn
+	 /*
+	      THIRD TURN FOR PLAYER
+	     */
 	    storage = 90210;
 	    storage = P.playTurn();
 
@@ -110,22 +193,133 @@ public class Texas{
 	    }
 	    if(storage > 0){
 		bet += storage;
+		System.out.println("You raised by $" + storage);
+		carryOverBet = storage;
+	    }//end player turn
+
+	    /*
+	      THIRD TURN FOR COMPUTER
+	     */
+
+	    storage = 90210;
+	    storage = D.playTurn(dealerHand, B, 4);
+
+	    if (storage == -1){
+		System.out.println("The computer folded and you won");
+		break;	    
 	    }
+	    if (storage == 0){
+		System.out.println("The computer called");
+		bet += carryOverBet;	
+	    }
+	    if(storage > 0){
+		bet += carryOverBet;	
+		int raise = storage;
+		System.out.println("The computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
+		int check = 90210;
+		check = Keyboard.readInt();
+		if(check == 1){
+		     bet += raise * 2;
+		}
+		else{
+		    System.out.println("You folded and lost your bet");
+		    break;
+		    }
+	    }
+	    System.out.println("The pot is now " + bet);
+
+	    //end computer turn
+
+
+
+	        
+	    /*
+	      REVEAL BRIDGE
+	     */
+	    System.out.println("The " + B.get(4) + " was shown on the bridge");
+	    System.out.println("The bridge now has the " + B.get(0) + ", the " + B.get(1) + ", the " + B.get(2)+  ", the " + B.get(3) + " and the " +  B.get(4));
+
+
+
+	    /*
+	      FOURTH TURN FOR PLAYER
+	     */
+	    storage = 90210;
+	    storage = P.playTurn();
+
+	    if (storage == -1){
+		System.out.println("You folded and lost your bet");
+		break;	    
+	    }
+	    if(storage > 0){
+		bet += storage;
+		System.out.println("You raised by $" + storage);
+		carryOverBet = storage;
+	    }//end player turn
+
+	    /*
+	      FOURTH TURN FOR COMPUTER
+	     */
+
+	    storage = 90210;
+	    storage = D.playTurn(dealerHand, B, 5);
+
+	    if (storage == -1){
+		System.out.println("The computer folded and you won");
+		break;	    
+	    }
+	    if (storage == 0){
+		System.out.println("The computer called");
+		bet += carryOverBet;	
+	    }
+	    if(storage > 0){
+		bet += carryOverBet;	
+		int raise = storage;
+		System.out.println("The computer raised by " + raise + ". Would you like to match his bet?\n   1. Call\n   2. Fold");
+		int check = 90210;
+		check = Keyboard.readInt();
+		if(check == 1){
+		     bet += raise * 2;
+		}
+		else{
+		    System.out.println("You folded and lost your bet");
+		    break;
+		    }
+	    }
+	    System.out.println("The pot is now " + bet);
+	    //end computer turn
+
+	    //ENDED ROUND
+	 
+
+
+
 	    
+	    /*
+	      SHOW CARDS SO WE CAN CHECK IF EVERYTHING IS CORRECT
+	     */
 	    
-	    
+	    //print out players cards
+	    System.out.println("Your hand: ");
+	    System.out.println(returnCard(playerHand.get(0)));
+	    System.out.println(returnCard(playerHand.get(1)));
+
+	    //print out dealers cards
+	    System.out.println("The computer's hand");
+	    System.out.println(returnCard(dealerHand.get(0)));
+	    System.out.println(returnCard(dealerHand.get(1)));
 	    
 		
 		
 
-	    if(handEval(P, D) == "player"){//hand eval also needs to be added
-		System.out.println("You beat the dealer's " +
-				   D.handVal() + " with a hand value of " + P.handVal());
+	    if(handEvalTwoPlayer(playerHand, dealerHand) == "player"){//hand eval also needs to be added
+		System.out.println("You beat the computer");
 		P.add(bet * 2);
 	    }
 		
 	    else {
-		System.out.println("The dealer won with a hand value of " + D.handVal());
+		System.out.println("The computer won");
+		P.remove(bet);
 	    }
 	    System.out.println("You now have " + P.mValue() + "$\n" +
 			       "Would you like to play another round?\n" +
@@ -143,23 +337,23 @@ public class Texas{
     }
 
 
-    public String handEval(TexasPlayer P , TexasDealer D){
-	return "player";
-	
-    }
     
+   
+
+
+    //prints out card for easier viewing
     public String returnCard(Card A){
 	if(A.suit == 3){
-	    return "- - - - - - - - -\n- S   " + A.value + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";
+	    return "- - - - - - - - -\n- S   " + A.cardToString() + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";
 	}
 	if(A.suit == 0){
-	    return "- - - - - - - - -\n- H   " + A.value + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -"; 
+	    return "- - - - - - - - -\n- H   " + A.cardToString() + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -"; 
 	}
 	if(A.suit == 2){
-	    return "- - - - - - - - -\n- C   " + A.value + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";	    
+	    return "- - - - - - - - -\n- C   " + A.cardToString() + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";	    
 	}
 	if(A.suit == 1){
-	    return "- - - - - - - - -\n- D   " + A.value + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";
+	    return "- - - - - - - - -\n- D   " + A.cardToString() + "         -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n-               -\n- - - - - - - - -";
 	}
 	return "ERROR 90210";
     }
