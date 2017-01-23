@@ -43,6 +43,35 @@ public class blackjack {
 	}
     }
 
+    public String endTurn(Dealer a, Gambler b, int bet) {
+	String ret = "";
+	
+	if (b.handVal() == 0) {
+	    ret = b.name() + " busted and the dealer won";
+	}
+
+	else if ( a.handVal() == b.handVal() ) {
+	    ret = b.name() + " and the dealer push";
+	    b.add(bet);
+	}
+
+	else if (a.handVal() == 0) {
+	    ret = "The dealer busted and " + b.name() + " won";
+	    b.add(bet * 2);
+	}
+
+	else if ( a.handVal() > b.handVal() ) {
+	    ret = "The dealer beat " + b.name();
+	}
+
+	else if ( a.handVal() < b.handVal() ) {
+	    ret = b.name() + " beat the dealer";
+	    b.add(bet * 2);
+	}
+
+	return ret;
+    }
+
 
     public int playGame() {
 	int bet;
@@ -66,22 +95,21 @@ public class blackjack {
 	    D.beginTurn(deck.draw(), deck.draw());
 
 	    playTurn(P);
+	    
+	    D.revealCard();
 	    playTurn(D);
 
-	    if (P.handVal() > D.handVal()) {
-		System.out.println("You beat the dealer's " +
-				   D.handVal() + " with a hand value of " + P.handVal());
-		P.add(bet * 2);
-	    }
-
-	    else {
-		System.out.println("The dealer won with a hand value of " + D.handVal());
-	    }
+	    System.out.println(endTurn(D, P, bet));
 
 	    System.out.println("Dealer's hand: " + D.hand() +
 			       "\nYour hand: " + P.hand());
 	    
 	    System.out.println();
+	    
+	    if (P.mValue() == 0) {
+		System.out.println("You have bankrupted");
+		break;
+	    }	    	    
 
 	    System.out.println("You now have " + P.mValue() + "$\n\n" +
 			       "Would you like to play another round?\n" +
@@ -89,6 +117,7 @@ public class blackjack {
 			   "enter l to leave game or play a different game");
 
 	    play = Keyboard.readString();
+	    
 	    System.out.println();
 	}
 	
