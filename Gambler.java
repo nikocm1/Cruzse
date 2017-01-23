@@ -111,6 +111,11 @@ public abstract class Gambler {
     protected void revealCard() {
 	System.out.println(name + " had a " + hand.get(1));
     }
+
+    protected void splitCards(Gambler b) {
+	b.hit(hand.get(1));
+	hand.remove(1);
+    }
     
     abstract String action();
     

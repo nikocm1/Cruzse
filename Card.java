@@ -114,4 +114,8 @@ public class Card{
     public void reduceAce() {
 	value = 1;
     }
+
+    public boolean equals( Card b ) {
+	return returnValue().equals(b.returnValue());
+    }
 }

@@ -13,7 +13,9 @@ public class Player extends Gambler {
 	money = m;
     }
 
-    protected void beginTurn(Card a, Card b) {
+    protected boolean beginTurn(Card a, Card b, int m) {
+	String split = "";
+	boolean bool = false;
 	deal(a, b);
 	int val = calcHandVal();
 	lowerAce();
@@ -22,15 +24,27 @@ public class Player extends Gambler {
 			   a + " and a " + b +
 			   " for a hand value of " + val);
 	System.out.println();
+
+	if (a.equals(b) && m <= money) {
+	    System.out.println("Would you like to split?" +
+			       "\nenter s to split");
+	    split = Keyboard.readString();
+
+	    if (split.equals("s")) {
+		bool = true;
+	    }
+	    System.out.println();
+	}
+	return bool;
     }    
 
     public String action() {
 	String ret = "";
-	
+
 	System.out.println("Would you like to hit or stay?" +
-			   "\nenter h to hit" +
-			   "\nenter s to stay");
-	
+			       "\nenter h to hit" +
+			       "\nenter s to stay");
+
 	ret = Keyboard.readString();
 	System.out.println();
 	return ret;

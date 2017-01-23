@@ -35,6 +35,11 @@ public class blackjack {
 		System.out.println();
 	    }
 
+	    /*	    if (act.equals("sp")) {
+		if (hand.size() == 2 && hand.get(0).equals(hand.get(1))) {
+	    */		    
+		
+
 	    else {
 		break;
 	    }
@@ -43,30 +48,33 @@ public class blackjack {
 	}
     }
 
-    public String endTurn(Dealer a, Gambler b, int bet) {
-	String ret = "";
+    public int endTurn(Dealer a, Gambler b, int bet) {
+	int ret = 0;
 	
 	if (b.handVal() == 0) {
-	    ret = b.name() + " busted and the dealer won";
+	    System.out.println(b.name() + " busted and the dealer won");
 	}
 
 	else if ( a.handVal() == b.handVal() ) {
-	    ret = b.name() + " and the dealer push";
+	    System.out.println(b.name() + " and the dealer push");
 	    b.add(bet);
+	    ret = bet;
 	}
 
 	else if (a.handVal() == 0) {
-	    ret = "The dealer busted and " + b.name() + " won";
+	    System.out.println("The dealer busted and " + b.name() + " won");
 	    b.add(bet * 2);
+	    ret = bet * 2;
 	}
 
 	else if ( a.handVal() > b.handVal() ) {
-	    ret = "The dealer beat " + b.name();
+	    System.out.println("The dealer beat " + b.name());
 	}
 
 	else if ( a.handVal() < b.handVal() ) {
-	    ret = b.name() + " beat the dealer";
+	    System.out.println(b.name() + " beat the dealer");
 	    b.add(bet * 2);
+	    ret = bet * 2;
 	}
 
 	return ret;
@@ -76,34 +84,49 @@ public class blackjack {
     public int playGame() {
 	int bet;
 	Player P = new Player(playerName, playerMoney);
+	Player temp = new Player(playerName, playerMoney);
 	Jack J = new Jack();
 	Dealer D = new Dealer();
+	boolean split;
+	int bonus;
 
 	String play = "p";
 
 	System.out.println("You have " + playerMoney + "$");
        
 	while (play.equals("p")) {
+	    split = false;
 	    P.reset();
 	    J.reset();
 	    D.reset();
+	    temp.reset();
 	    deck.resetDrawNum();
- 	    deck.shuffle();
+      	    deck.shuffle();
 	    bet = P.bet();
 	    
-	    P.beginTurn(deck.draw(), deck.draw());
 	    D.beginTurn(deck.draw(), deck.draw());
+	    split = P.beginTurn(deck.draw(), deck.draw(), bet);
 
+	    if (split) {
+		P.splitCards(temp);
+		P.add(bet * -1);
+		System.out.println("Hand One\n");
+		playTurn(temp);
+		System.out.println("Hand Two\n");
+	    }
+	    
 	    playTurn(P);
 	    
 	    D.revealCard();
 	    playTurn(D);
 
-	    System.out.println(endTurn(D, P, bet));
+	    if (split) {
+		bonus = endTurn(D, temp, bet);
+		P.add(bonus);
+	    }		
 
-	    System.out.println("Dealer's hand: " + D.hand() +
-			       "\nYour hand: " + P.hand());
-	    
+	    endTurn(D, P, bet);
+
 	    System.out.println();
 	    
 	    if (P.mValue() == 0) {
