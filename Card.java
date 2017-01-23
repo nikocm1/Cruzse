@@ -115,6 +115,12 @@ public class Card{
 	value = 1;
     }
 
+    public void increaseAce() {
+	if (value == 1) {
+	    value = 11;
+	}
+    }
+
     public boolean equals( Card b ) {
 	return returnValue().equals(b.returnValue());
     }

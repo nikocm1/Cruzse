@@ -80,6 +80,12 @@ public class Deck{
 	return ret;
     }
 
+    public void resetAces() {
+	for (int i = 0; i < 52; i++) {
+	    deck[i].increaseAce();
+	}
+    }
+
     /*       for testing
     public static void main( String[] args ) {
 	Deck d = new Deck();

@@ -102,6 +102,7 @@ public class blackjack {
 	    temp.reset();
 	    deck.resetDrawNum();
       	    deck.shuffle();
+	    deck.resetAces();
 	    bet = P.bet();
 	    
 	    D.beginTurn(deck.draw(), deck.draw());
