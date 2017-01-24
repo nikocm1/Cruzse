@@ -8,15 +8,25 @@ pd <4>
 ------------------------------------------
 OBSTACLES OVERCOME
 
-
+coding split()
+coding aces as 11's and then 1's when you bust
+and making sure they reset every round
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 wow we so BOSS bc...
 
-
+I actually find our casino pretty fun and if
+it were  a game that had been available on
+the school computers, I might be tempted to
+play it. It's also pretty boss because blackjack
+and slots run pretty seamlessly if you follow
+the input you're supposed to.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 blah blah pesky bug...
 maybe some of these will move into the Obs.Ovrcm section...
-
+Aces messed up the game so much
+Split was irritating at first but it was
+because I missed a small error in some if
+statements.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -24,7 +34,12 @@ wow! oo!...
 
 MID-DEVELOPMENT DESIGN CHANGES
 
-
+Got rid of the blackjack ai idea because we
+both had lots of other work and not enough
+time to create a nice ai. I know they could
+be simple and just lose but I felt the game
+stand alone would be better than the game
+with one relatively bad ai.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 we changed ___ to ___ bc...
 
@@ -62,6 +77,11 @@ Player, Dealer
 --------------------------------------------------------------
 <Jack> :: added money to blackjack; edited blackjack, Dealer,
 Player, Woo
+<Member> :: 
+==============================================================
+2017-01-22
+--------------------------------------------------------------
+<Jack> :: edited Woo, blackjack, Card, Deck, Player, Gambler 
 <Member> :: 
 ==============================================================
 
